@@ -18,7 +18,7 @@ export default function Card({ value }) {
                     <button>NOT OK</button>
                 </div>
             ) : (
-                <div style={{ backgroundColor: "green" }}>
+                <div style={{ backgroundColor: `${sgreen}` }}>
                     <h1>Title: {value.title}</h1>
                     <div>Id: {value.id}</div>
                     <div>userId: {value.userId}</div>
