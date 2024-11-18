@@ -21,10 +21,12 @@ export default async function Home() {
                         <div
                             key={index}
                             style={{
-                                width: "50%",
-                                height: "400px",
+                                width: "25%",
+                                height: "200px",
                                 paddingTop: "1rem",
                                 overflowY: "scroll",
+                                paddingBottom: "0px",
+                                marginBottom: "0px",
                             }}
                         >
                             <Card value={product} />
