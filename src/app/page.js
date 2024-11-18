@@ -25,8 +25,6 @@ export default async function Home() {
                                 height: "200px",
                                 paddingTop: "1rem",
                                 overflowY: "scroll",
-                                paddingBottom: "0px",
-                                marginBottom: "0px",
                             }}
                         >
                             <Card value={product} />
