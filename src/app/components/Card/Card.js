@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { FaArrowRight, MdDeleteForever } from "../icons/icons";
 import css from "../../Css/main.module.css";
 export default function Card({ value, index, deleteindex, setCompleteded }) {
-    let [complete, setcomplete] = useState(value.completed);
+   
     let action1 = () => {
         setCompleteded(index);
     };

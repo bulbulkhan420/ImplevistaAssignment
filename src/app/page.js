@@ -1,13 +1,19 @@
 "use client";
 import Card from "./components/Card/Card";
-
+import { useForm } from 'react-hook-form';
 import { rootUrl } from "./utils/urls";
 import { todo } from "./utils/todos";
 import main from "../app/Css/main.module.css";
 import { useEffect, useState } from "react";
 
 import httpget from "./services/http-service";
+import { title } from "process";
 export default async function Home() {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm();
     let [allData, setallData] = useState([{}]);
     let url = `${rootUrl}/${todo}`;
     const fetchData = async () => {
@@ -15,10 +21,18 @@ export default async function Home() {
         setallData(data);
     };
     let deleteindex = (index) => {
-        console.log(index);
+       
         allData.splice(index, 1);
         setallData([...allData]);
     };
+    let getValue=(data)=>{
+       let obj={
+        title:data.newtitle,
+        completed:false
+       }
+       allData.push(obj);
+       setallData([...allData]);
+    }
     let setCompleteded = (index) => {
         console.log(index);
         setallData((prev) =>
@@ -41,12 +55,12 @@ export default async function Home() {
     return (
         <div>
             <div className={`${main.page}`}>
-                <div className={`${main.block}`}>
-                    <input className={`${main.input}`}></input>
-                    <div className={`${main.buttongroup}`}>
-                        <button className={`${main.buttonAdd}`}>ADD</button>
+                <form className={`${main.block}`} onSubmit={handleSubmit(getValue)}>
+                    <input className={`${main.input}`} {...register('newtitle',{required:true,minLength:{value:5}})}></input>
+                    <div className={`${main.buttongroup}`} >
+                        <button type='submit' className={`${main.buttonAdd}`}>ADD</button>
                     </div>
-                </div>
+                </form>
             </div>
 
             {allData &&
