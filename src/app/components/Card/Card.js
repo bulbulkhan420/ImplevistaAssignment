@@ -1,115 +1,45 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaArrowRight, MdDeleteForever } from "../icons/icons";
-export default function Card({ value }) {
-    let [sgreen, setgreen] = useState("rgb(63 98 18)");
-    let [lgreen, setlgreen] = useState("rgb(217 249 157)");
-    let [isable, setisable] = useState(false);
-    let [colorchange, scolorchange] = useState(true);
-    let action = () => {
-        scolorchange(!colorchange);
-        setisable(!isable);
+import css from "../../Css/main.module.css";
+export default function Card({ value, index, deleteindex, setCompleteded }) {
+    let [complete, setcomplete] = useState(value.completed);
+    let action1 = () => {
+        setCompleteded(index);
     };
+    let action2 = () => {
+        deleteindex(index);
+    };
+
     return (
-        <div className="text-center">
-            {value.completed ? (
-                <div
-                    style={{
-                        backgroundColor: `${colorchange ? lgreen : sgreen}`,
-                    }}
-                    className="border-lime-500 mt-1"
-                >
-                    <div className="leading-relaxed flex flex-row justify-center text-xl space-x-5 text-white">
-                        {!isable ? (
-                            <del>Title: {value.title}</del>
+        <div>
+            {
+                <div className={`${css.block}`}>
+                    <div className={`${css.titledesign}`}>
+                        {value.completed ? (
+                            <del>{index + 1 + " " + value.title}</del>
                         ) : (
-                            <h1>Title: {value.title}</h1>
+                            <div>{index + 1 + " " + value.title}</div>
+                        )}
+                    </div>
+                    <div className={`${css.buttongroup}`}>
+                        {value.completed ? (
+                            ""
+                        ) : (
+                            <button
+                                onClick={action1}
+                                className={`${css.button}`}
+                            >
+                                <FaArrowRight />
+                            </button>
                         )}
 
-                        <div className="flex justify-end w-auto">
-                            {!isable ? (
-                                <button
-                                    onClick={action}
-                                    disabled
-                                    className="p-1 bg-yellow-500 mr-1"
-                                >
-                                    <FaArrowRight className="text-2xl text-red-600 text-center p-0 m-0" />
-                                </button>
-                            ) : (
-                                <button
-                                    onClick={action}
-                                    className="p-1 bg-yellow-500 mr-1"
-                                >
-                                    <FaArrowRight className="text-2xl text-black text-center" />
-                                </button>
-                            )}
-                            {!isable ? (
-                                <button
-                                    onClick={action}
-                                    className="p-1 bg-yellow-500 mr-1"
-                                >
-                                    <MdDeleteForever className="text-2xl text-black text-center" />
-                                </button>
-                            ) : (
-                                <button
-                                    onClick={action}
-                                    disabled
-                                    className="p-1 bg-yellow-500 mr-1"
-                                >
-                                    <MdDeleteForever className="text-2xl text-red-600 text-center" />
-                                </button>
-                            )}
-                        </div>
+                        <button onClick={action2} className={`${css.button}`}>
+                            <MdDeleteForever />
+                        </button>
                     </div>
                 </div>
-            ) : (
-                <div
-                    style={{
-                        backgroundColor: `${colorchange ? sgreen : lgreen}`,
-                    }}
-                    className="border-lime-500 mt-1"
-                >
-                    <div className="leading-relaxed flex flex-row justify-center text-white text-xl space-x-5">
-                        {!isable ? (
-                            <h1>Title: {value.title}</h1>
-                        ) : (
-                            <del>Title: {value.title}</del>
-                        )}
-                        {!isable ? (
-                            <button
-                                onClick={action}
-                                className="p-1 bg-yellow-500 mr-1"
-                            >
-                                <FaArrowRight className="text-2xl text-black text-center " />
-                            </button>
-                        ) : (
-                            <button
-                                onClick={action}
-                                disabled
-                                className="p-1 bg-yellow-500 mr-1"
-                            >
-                                <FaArrowRight className="text-2xl text-red-600 text-center" />
-                            </button>
-                        )}
-                        {!isable ? (
-                            <button
-                                onClick={action}
-                                disabled
-                                className="p-1 bg-yellow-500 mr-1"
-                            >
-                                <MdDeleteForever className="text-2xl text-red-600 text-center" />
-                            </button>
-                        ) : (
-                            <button
-                                onClick={action}
-                                className="p-1 bg-yellow-500 mr-1"
-                            >
-                                <MdDeleteForever className="text-2xl text-black text-center" />
-                            </button>
-                        )}
-                    </div>
-                </div>
-            )}
+            }
         </div>
     );
 }

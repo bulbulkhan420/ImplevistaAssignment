@@ -1,23 +1,58 @@
-.button {
-    background-color: #4caf50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+.block {
+    margin: 0px 2rem;
+    line-height: 60px;
+    padding: 5px;
+    background-color: #c5e1e5;
     border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    font-size: larger;
+    display: flex;
+    justify-content: space-around;
 }
-
-.button:hover {
-    background-color: #45a049; /* Darker Green */
-    transform: scale(1.1); /* Slight zoom effect on hover */
+.button {
+    background-color: #1d1ba3;
+    text-align: center;
+    padding: 5px;
+    border-radius: 2px;
+    color: white;
+    line-height: 40px;
+    width: 70px;
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-.button:active {
-    background-color: #3e8e41; /* Even darker green when clicked */
-    transform: scale(0.95); /* Press effect */
+.buttonAdd {
+    background-color: #2c6bec;
+    text-align: center;
+    padding: 5px;
+    border-radius: 2px;
+    color: white;
+    line-height: 40px;
+    width: 90px;
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titledesign {
+    width: 100%;
+    text-align: left;
+    padding-left: 5px;
+}
+.page {
+    margin: 0px 2rem;
+}
+.buttongroup {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: end;
+}
+.input {
+    width: 100%;
+    text-align: left;
+    padding-left: 5px;
 }
