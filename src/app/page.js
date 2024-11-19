@@ -1,32 +1,19 @@
-import Image from "next/image";
-import img from "../asset/img.jpg";
-import Card from "./Card/Card";
+import Card from "./components/Card/Card";
+import Http from "./services/http-service";
+import { rootUrl } from "./utils/urls";
+import { todo } from "./utils/todos";
 export default async function Home() {
-    let allData = await fetch("https://jsonplaceholder.typicode.com/todos");
-    allData = await allData.json();
+    console.log(rootUrl);
+    let allData = await Http(`${rootUrl}/${todo}`);
+    // let allData = await fetch("https://jsonplaceholder.typicode.com/todos");
+    // allData = await allData.json();
+
     return (
-        <div
-            style={{
-                display: "flex",
-                flexWrap: "wrap",
-                flexDirection: "row",
-                height: "auto",
-                width: "100%",
-                overflowY: "scroll",
-            }}
-        >
+        <div className="grid grid-cols-1 sm:mx-5 md:mx-8 lg:mx-28">
             {allData &&
                 allData.map((product, index) => {
                     return (
-                        <div
-                            key={index}
-                            style={{
-                                width: "25%",
-                                height: "200px",
-                                paddingTop: "1rem",
-                                overflowY: "scroll",
-                            }}
-                        >
+                        <div key={index}>
                             <Card value={product} />
                         </div>
                     );

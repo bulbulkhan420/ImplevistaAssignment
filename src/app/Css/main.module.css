@@ -1,0 +1,23 @@
+.button {
+    background-color: #4caf50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #45a049; /* Darker Green */
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.button:active {
+    background-color: #3e8e41; /* Even darker green when clicked */
+    transform: scale(0.95); /* Press effect */
+}
